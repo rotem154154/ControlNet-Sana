@@ -1,0 +1,17 @@
+torch
+pytorch-lightning
+diffusers
+wandb
+peft
+lovely-tensors
+lion-pytorch
+h5py
+numpy
+Pillow
+tqdm
+pandas
+torch-fidelity
+transformers
+lpips
+scikit-image
+opencv-python
