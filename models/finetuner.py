@@ -126,7 +126,7 @@ def forward_c(
 
     return Transformer2DModelOutput(sample=output)
 
-class CBlock(nn.Module):
+class ControlNetBlock(nn.Module):
     def __init__(self, target_block, channels, first_block=False):
         super().__init__()
         self.og_block = target_block
@@ -183,7 +183,7 @@ class ControlNetFineTuner(pl.LightningModule):
         self.transformer.forward = forward_c.__get__(self.transformer)
         for i in range(len(self.transformer.transformer_blocks)):
             if i < 14:
-                self.transformer.transformer_blocks[i] = CBlock(
+                self.transformer.transformer_blocks[i] = ControlNetBlock(
                     self.transformer.transformer_blocks[i], 1152, first_block=(i == 0)
                 )
 
