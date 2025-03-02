@@ -111,10 +111,8 @@ class ControlNetBlock(nn.Module):
 
 All images and figures for documentation are stored in the `assets` folder.
 
-<img src="assets/controlnet_images.jpg" alt="ControlNet Evaluation"/>
-<img src="assets/controlnet_architecture.png" alt="ControlNet Architecture" width="500"/>
-<img src="assets/controlnet_eval.png" alt="ControlNet Evaluation" height="80"/>
-
-## License
-
-[Specify your license here]
+<p>
+  <img src="assets/controlnet_images.jpg" alt="ControlNet Evaluation" style="display:inline-block;"/>
+  <img src="assets/controlnet_eval.png" alt="ControlNet Evaluation" style="display:inline-block;"/>
+  <img src="assets/controlnet_architecture.png" alt="ControlNet Architecture" style="display:inline-block;"/>
+</p>
