@@ -1,0 +1,47 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore logs and output files
+wandb/
+*.log
+*.out
+*.err
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+
+# Ignore dataset and model artifacts
+data/
+models/.ipynb_checkpoints/
+
+# Ignore virtual environment
+venv/
+env/
+*.venv
+
+# Ignore config and temporary training artifacts
+config/__pycache__/
+utils/__pycache__/
+models/__pycache__/
+train_cache/
+checkpoints/
+runs/
+outputs/
+
+# Ignore specific large files (if applicable)
+*.h5
+*.ckpt
+*.pt
+*.pth
+
+# Ignore notebook output cache (if needed)
+notebook_trainer.ipynb
+
