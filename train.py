@@ -3,10 +3,12 @@ import torch
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
-from data.dataset import ControlNetDataModule
-from models.finetuner import ControlNetFineTuner
+from data.dataset_features import ControlNetDataModule
+from models.finetuner_ip_adapter import ControlNetFineTuner
 from utils.helpers import seed_everything
 from config.config import Config
+import lovely_tensors as lt
+lt.monkey_patch()
 
 def train_model():
     base_path = '../sana/'
@@ -16,10 +18,11 @@ def train_model():
         image_latents_path=base_path+"t2i_sfhq.h5",
         text_encodings_path=base_path+"text_encodings.h5",
         batch_size=Config.batch_size,
-        holdout_ids_file=base_path+"holdout_ids.npy"
+        holdout_ids_file=base_path+"holdout_ids.npy",
+        image_encodings_dir='/root/.cache/kagglehub/datasets/selfishgene/sfhq-t2i-synthetic-faces-from-text-2-image-models/versions/1/pretrained_features/pretrained_features',
     )
 
-    model = ControlNetFineTuner(load_ckpt=True, cfg_scale=3.0)
+    model = ControlNetFineTuner(load_ckpt=False, cfg_scale=3.0)
     data_module.setup()
 
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
@@ -27,7 +30,7 @@ def train_model():
         filename="model_epoch_{epoch:02d}_step_{step}",
         save_top_k=-1,
         save_last=True,
-        every_n_train_steps=2000,
+        every_n_train_steps=5000,
     )
 
     class LrLogger(pl.Callback):
