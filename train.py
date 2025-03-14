@@ -4,7 +4,7 @@ import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 from data.dataset_features import ControlNetDataModule
-from models.finetuner_ip_adapter import ControlNetFineTuner
+from models.finetuner_pruning_lora import ControlNetFineTuner
 from utils.helpers import seed_everything
 from config.config import Config
 import lovely_tensors as lt
